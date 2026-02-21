@@ -51,7 +51,12 @@ async function loadEnv() {
       }
     }
   } catch (e) {
-    console.error('Gagal membaca .env:', e);
+    console.log('.env not found, checking config.js...');
+  }
+
+  if (!state.apiKey && typeof CONFIG !== 'undefined' && CONFIG.OPENROUTER_API_KEY) {
+    state.apiKey = CONFIG.OPENROUTER_API_KEY;
+    console.log('API key loaded from config.js');
   }
 }
 
