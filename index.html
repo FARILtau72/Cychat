@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="CyChat - AI Chatbot powered by Gemini">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="CyChat">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icons/icon-192.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>CyChat</title>
+</head>
+<body>
+  <div id="app">
+
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <div class="brand-logo-sm">
+            <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+              <rect width="40" height="40" rx="10" fill="url(#cygrad)"/>
+              <path d="M12 20C12 15.58 15.58 12 20 12C22.4 12 24.6 13.1 26 14.8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="20" cy="20" r="3" fill="white"/>
+              <path d="M28 20C28 24.42 24.42 28 20 28C17.6 28 15.4 26.9 14 25.2" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              <defs><linearGradient id="cygrad" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#7c9a8e"/><stop offset="1" stop-color="#5f7d71"/></linearGradient></defs>
+            </svg>
+          </div>
+          <span>CyChat</span>
+        </div>
+        <button id="btnCloseSidebar" class="icon-btn" aria-label="Close sidebar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <button id="btnNewChat" class="new-chat-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Chat Baru
+      </button>
+      <div id="chatHistory" class="chat-history"></div>
+      <div class="sidebar-footer">
+        <button id="btnClearAll" class="settings-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Hapus Semua Chat
+        </button>
+      </div>
+    </div>
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <div id="welcomeScreen" class="screen welcome-screen active">
+      <header class="welcome-header">
+        <button id="btnOpenSidebar" class="icon-btn" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="header-title">
+          <span class="header-name">CyChat</span>
+          <span class="header-badge">✦</span>
+        </div>
+        <div style="width:40px"></div>
+      </header>
+
+      <div class="welcome-content">
+        <div class="cychat-logo" aria-label="CyChat Logo">
+          <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
+            <defs>
+              <linearGradient id="logoGrad1" x1="0" y1="0" x2="90" y2="90">
+                <stop stop-color="#7c9a8e"/>
+                <stop offset="0.5" stop-color="#a8c5b8"/>
+                <stop offset="1" stop-color="#c4b5a0"/>
+              </linearGradient>
+              <linearGradient id="logoGrad2" x1="90" y1="0" x2="0" y2="90">
+                <stop stop-color="#a8c5b8"/>
+                <stop offset="1" stop-color="#7c9a8e"/>
+              </linearGradient>
+            </defs>
+            <circle cx="45" cy="45" r="42" stroke="url(#logoGrad1)" stroke-width="4" fill="none" class="logo-orbit"/>
+            <path d="M18 45C18 30.09 30.09 18 45 18C53.5 18 61 22 66 28" stroke="url(#logoGrad2)" stroke-width="5" stroke-linecap="round" class="logo-arc1"/>
+            <path d="M72 45C72 59.91 59.91 72 45 72C36.5 72 29 68 24 62" stroke="url(#logoGrad1)" stroke-width="5" stroke-linecap="round" class="logo-arc2"/>
+            <circle cx="45" cy="45" r="8" fill="url(#logoGrad1)" class="logo-core"/>
+            <circle cx="66" cy="28" r="4" fill="#a8c5b8" class="logo-dot1"/>
+            <circle cx="24" cy="62" r="4" fill="#7c9a8e" class="logo-dot2"/>
+          </svg>
+        </div>
+        <h1 class="welcome-title">Hai, ada yang mau diceritain? 💬</h1>
+        <p class="welcome-subtitle">Psikolog virtual untuk kamu yang butuh didengar</p>
+      </div>
+
+      <div class="suggestions-area">
+        <div class="suggestions-row">
+          <button class="suggestion-chip" data-prompt="Aku lagi burnout banget sama kerjaan, nggak tau harus gimana">😮‍💨 Burnout kerja</button>
+          <button class="suggestion-chip" data-prompt="Aku merasa cemas terus-terusan dan susah tidur">😰 Cemas & susah tidur</button>
+          <button class="suggestion-chip" data-prompt="Aku ngerasa kesepian padahal banyak teman">😔 Merasa kesepian</button>
+        </div>
+        <div class="suggestions-row">
+          <button class="suggestion-chip" data-prompt="Aku bingung sama arah hidup, umur udah 20an tapi belum jelas mau ke mana">🤔 Quarter-life crisis</button>
+          <button class="suggestion-chip" data-prompt="Aku sering overthinking dan nggak bisa berhenti pikir negatif">🌀 Overthinking</button>
+          <button class="suggestion-chip" data-prompt="Tekanan dari keluarga bikin aku stres berat">👨‍👩‍👦 Tekanan keluarga</button>
+        </div>
+        <div class="suggestions-row">
+          <button class="suggestion-chip" data-prompt="Aku baru putus dan rasanya berat banget">💔 Patah hati</button>
+          <button class="suggestion-chip" data-prompt="Aku ngerasa nggak cukup baik dibanding orang lain">🪞 Insecurity</button>
+          <button class="suggestion-chip" data-prompt="Ajarin aku teknik relaksasi yang simpel dong">🧘 Teknik relaksasi</button>
+        </div>
+      </div>
+
+      <div class="input-bar">
+        <input type="text" id="welcomeInput" class="message-input" placeholder="Pesan..." autocomplete="off">
+        <button id="btnSendWelcome" class="send-btn" aria-label="Kirim" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="chatScreen" class="screen chat-screen">
+      <header class="chat-header">
+        <button id="btnBack" class="icon-btn" aria-label="Kembali">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="chat-header-info">
+          <div class="chat-header-name">
+            CyChat
+            <span class="online-dot"></span>
+          </div>
+          <div class="chat-header-model">Psikolog Virtual</div>
+        </div>
+        <button id="btnDeleteChat" class="icon-btn" aria-label="Hapus chat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </button>
+      </header>
+
+      <div id="messagesContainer" class="messages-container"></div>
+
+      <div class="input-bar">
+        <input type="text" id="chatInput" class="message-input" placeholder="Pesan..." autocomplete="off">
+        <button id="btnSendChat" class="send-btn" aria-label="Kirim" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
